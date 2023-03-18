@@ -5,7 +5,7 @@ import SingleJob from './SingleJob'
 import SearchController from './SearchController'
 import SalaryFilter from './SalaryFilter'
 export default function AllJobs() {
-    const { jobs, jobType, search, sortingType } = useSelector(state => state.jobs)
+    const { jobs = [], jobType, search, sortingType } = useSelector(state => state.jobs)
 
 
     const dispatch = useDispatch()
@@ -31,6 +31,7 @@ export default function AllJobs() {
     }
 
     const sortJobsBySalary = (jobs) => {
+        console.log(sortingType)
         if (sortingType === 'All') {
             return jobs
         }

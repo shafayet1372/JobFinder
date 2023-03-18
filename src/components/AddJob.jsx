@@ -15,7 +15,7 @@ const initialValue = {
 export default function AddJob() {
 
     const [values, setValues] = useState(initialValue)
-    const { jobs, editedJob } = useSelector(state => state.jobs)
+    const { jobs, editedJob, jobType } = useSelector(state => state.jobs)
     const [editedMode, setEditedMode] = useState(false)
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -47,6 +47,9 @@ export default function AddJob() {
 
         }
     }, [editedJob])
+
+
+
     const changeHandler = (e) => {
 
         setValues({ ...values, [e.target.name]: e.target.value })
@@ -61,7 +64,6 @@ export default function AddJob() {
             deadline: values.lwsJobDeadline
         }))
         setValues(initialValue)
-        dispatch(setJobType('All'))
         navigate('/')
     }
 
@@ -76,9 +78,9 @@ export default function AddJob() {
             deadline: values.lwsJobDeadline
         }))
         setValues(initialValue)
-        dispatch(setJobType('All'))
         dispatch(resetEditedJob())
         navigate('/')
+
     }
     return <div className="max-w-[90rem] mx-auto px-4 sm:px-6 md:px-8">
 

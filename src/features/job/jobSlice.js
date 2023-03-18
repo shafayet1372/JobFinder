@@ -46,7 +46,7 @@ export const getSpecificjobAsync = createAsyncThunk('job/editJobAsync', async (i
 }
 );
 export const updateJobAsync = createAsyncThunk('job/updateJob', async (data) => {
-  console.log(data)
+
   const response = await updateJob(data);
   // The value we return becomes the `fulfilled` action payload
   return response
@@ -139,9 +139,10 @@ const jobSlice = createSlice({
       .addCase(updateJobAsync.fulfilled, (state, action) => {
         state.isLoading = true
         state.error = ""
-        let data = state.jobs.find(job => action.payload.id == job.id)
-        data = action.payload
-        // state.editedJob = action.payload
+        let data = state.jobs
+        let findData = data.find(job => action.payload.id == job.id)
+        findData = action.payload
+        state.jobs = data
       })
       .addCase(updateJobAsync.rejected, (state, action) => {
         state.isLoading = false
