@@ -1,5 +1,5 @@
 
 
-const https='http://localhost:9000/jobs'
+const https = 'https://bedecked-zinc-haumea.glitch.me/jobs/'
 
 export default https
